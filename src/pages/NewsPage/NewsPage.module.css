@@ -1,0 +1,433 @@
+/* NewsPage.module.css
+   Put your watermark image in the same folder and name it "news-watermark.png"
+   or update --watermark-url to point to a different path/URL.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Montserrat:wght@300;600&display=swap');
+
+:root{
+  --page-max-width: 1100px;
+  --page-bg: #e9e8e7;         /* overall light gray */
+  --panel-bg: #f3f1ef;        /* pale card background */
+  --pale-pink: #fff6f6;       /* card pale background */
+  --brown: #8b5a34;           /* accent brown */
+  --cta-gold: #c8903a;        /* buttons */
+  --muted: #6f6f6f;
+  --card-shadow: 0 6px 10px rgba(0,0,0,0.12);
+  --watermark-url: url('/public/assets/logo.png');
+}
+
+/* Page wrapper (main content only) */
+.page {
+  width: 100%;
+  background: var(--page-bg);
+  padding: 24px 18px 48px;
+  box-sizing: border-box;
+  font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color: #222;
+}
+
+/* HERO area (watermark + title + CTA) */
+.hero {
+  width: 100%;
+  max-width: var(--page-max-width);
+  margin: 8px auto 36px;
+  height: 320px;
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+
+  /* watermark (using image + overlay gradient) */
+  background:
+    linear-gradient(rgba(0,0,0,0.40), rgba(0,0,0,0.40)),
+    var(--watermark-url) center/contain no-repeat,
+    radial-gradient(ellipse at center, #e2bba2, #e0a986);
+  background-size:
+    cover,      /* overlay fills hero */
+    contain,    /* watermark scales proportionally */
+    cover;      /* gradient fills hero */
+
+  color: rgba(255,255,255,0.95);
+}
+
+/* content inside hero (left aligned) */
+.heroInner {
+  padding-left: 36px;
+  max-width: 760px;
+}
+
+/* large Merriweather title */
+.title {
+  font-family: 'Merriweather', serif;
+  font-size: 60px;
+  margin: 0 0 6px 0;
+  line-height: 0.95;
+  letter-spacing: -1px;
+  color: rgba(255,255,255,0.98);
+  text-shadow: 0 3px 0 rgba(0,0,0,0.14);
+}
+
+/* small lead under title */
+.lead {
+  font-size: 18px;
+  margin: 8px 0 16px;
+  color: rgba(255,255,255,0.95);
+  line-height: 1.6;
+}
+
+/* Read More button inside hero */
+.readMoreBtn {
+  background: linear-gradient(#c78f3b, #a86f2b);
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* Search bar area */
+.searchWrap {
+  max-width: var(--page-max-width);
+  margin: 18px auto;
+  padding: 0 6px;
+}
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--page-bg);
+  border-radius: 20px;
+  border: 2px solid rgba(139,90,52,0.25);
+  padding: 8px 14px;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.05) inset;
+  max-width: 700px;
+}
+.searchIcon {
+  font-size: 18px;
+  color: var(--muted);
+}
+.searchInput {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-style: italic;
+  color: #555;
+  font-size: 15px;
+}
+
+/* Main content grid: left articles + right sidebar */
+.contentGrid {
+  max-width: var(--page-max-width);
+  margin: 10px auto;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 30px;
+  padding: 0 6px;
+  align-items: start;
+}
+
+/* Article list (left column) */
+.articles {
+  display: grid;
+  grid-auto-rows: auto;
+  gap: 18px;
+}
+
+/* Each article row: thumbnail left, content right */
+.articleCard {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* large thumbnail */
+.thumb {
+  width: 180px;
+  height: 140px;
+  background: var(--pale-pink);
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 8px;
+  box-shadow: 0 6px 0 rgba(0,0,0,0.12);
+  flex-shrink: 0;
+}
+
+/* article text area */
+.articleBody {
+  flex: 1;
+}
+.articleTitle {
+  font-family: 'Merriweather', serif;
+  font-size: 24px;
+  margin: 2px 0;
+  color: #111;
+}
+.articleText {
+  color: #333;
+  margin: 8px 0 14px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* read more button for article */
+.cardBtn {
+  background: linear-gradient(#c78f3b, #a86f2b);
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  box-shadow: 0 6px 10px rgba(0,0,0,0.18);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* second row small cards (two across) */
+.articleRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 6px;
+}
+.smallCard {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+.thumbSmall {
+  width: 100%;
+  height: 110px;
+  background: var(--pale-pink);
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.12);
+  box-shadow: 0 6px 0 rgba(0,0,0,0.12);
+}
+.smallText {
+  font-size: 14px;
+  color: #222;
+}
+
+/* Sidebar styles */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Quick links card */
+.quickLinks {
+  background: var(--pale-pink);
+  padding: 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 6px 0 rgba(0,0,0,0.12);
+}
+.quickTitle {
+  font-family: 'Merriweather', serif;
+  color: var(--brown);
+  margin: 4px 0 12px;
+  font-size: 22px;
+}
+.linksList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.linksList li {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 0;
+  color: #8b5a34;
+  font-size: 15px;
+}
+.icon {
+  display: inline-flex;
+  width: 30px;
+  justify-content: center;
+  font-size: 18px;
+}
+
+/* Events CTA in sidebar */
+.eventsCard {
+  background: var(--pale-pink);
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 6px 0 rgba(0,0,0,0.12);
+  text-align: center;
+}
+.eventsLead {
+  font-weight: 600;
+  color: var(--brown);
+  margin-bottom: 12px;
+}
+.eventsBtn {
+  background: linear-gradient(#c78f3b, #a86f2b);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 12px;
+  box-shadow: 0 6px 10px rgba(0,0,0,0.18);
+  cursor: pointer;
+  font-weight: 600;
+}
+.image-box {
+  width: 100%;
+  height: 150px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+}
+.image-box1 { background-image: linear-gradient(180deg, rgba(21,21,21,0.42), rgba(21,21,21,0.42)), url('/public/assets/Kuttab.webp'); }
+.image-box2 { background-image: linear-gradient(180deg, rgba(21,21,21,0.42), rgba(21,21,21,0.42)), url('/public/assets/Lower.jpg'); }
+.image-box3 { background-image: linear-gradient(180deg, rgba(21,21,21,0.42), rgba(21,21,21,0.42)), url('/public/assets/Tahfiz.webp'); }
+.image-box4 { background-image: linear-gradient(180deg, rgba(21,21,21,0.42), rgba(21,21,21,0.42)), url('/public/assets/arabic.webp'); }
+/* --- Search Bar --- */
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin: 20px auto;
+  max-width: 500px;
+  background: #f5f5f5;
+  border-radius: 20px;
+  border: 1px solid #a88c74;
+  padding: 6px 14px;
+  color: #888;
+  font-style: italic;
+}
+
+.search-bar input {
+  border: none;
+  background: transparent;
+  flex: 1;
+  outline: none;
+  font-size: 14px;
+}
+
+.icon-search {
+  font-size: 16px;
+  margin-right: 6px;
+  color: #704b36;
+}
+/* Sidebar Boxes */
+.sidebar-box {
+  background: #fceff1;
+  border-radius: 18px;
+  padding: 35px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  margin-bottom: 25px; /* default spacing */
+}
+
+/* Remove bottom margin for last box */
+.sidebar-box:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive spacing for smaller screens */
+@media (max-width: 1024px) {
+  .sidebar-box {
+    margin-bottom: 20px;
+    padding: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar-box {
+    margin-bottom: 16px;
+    padding: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar-box {
+    margin-bottom: 12px;
+    padding: 18px;
+  }
+}
+
+/* Headings */
+.sidebar-box h3 {
+  font-family: 'Merriweather', serif;
+  color: #704b36;
+  margin-top: 0;
+}
+
+/* List */
+.sidebar-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-box ul li a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #704b36;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.sidebar-box ul li a:hover {
+  color: #c8903a;
+}
+
+.icon {
+  font-size: 16px;
+  color: #704b36;
+}
+
+/* Sidebar Buttons */
+.sidebar-box button {
+  background-color: #c8903a;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+.sidebar-box button:hover {
+  background-color: #a67128;
+}
+/* Responsive */
+@media (max-width: 980px) {
+  .title { font-size: 48px; }
+  .hero { height: 260px; }
+  .contentGrid { grid-template-columns: 1fr; gap: 18px; }
+  .thumb { width: 160px; height: 120px; }
+  .articleCard { flex-direction: row; }
+  .articleRow { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .title { font-size: 36px; padding-left: 18px; }
+  .hero { height: 200px; }
+  .heroInner { padding-left: 18px; }
+  .thumb { width: 100%; height: 160px; }
+  .articleCard { flex-direction: column; gap: 12px; }
+  .articleBody { max-width: 100%; }
+}

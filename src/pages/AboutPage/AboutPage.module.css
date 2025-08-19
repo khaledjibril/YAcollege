@@ -1,0 +1,208 @@
+:root{
+  --bg: #e9e8e7;
+  --panel: #f3f1ef;
+  --brown: #8b5a34;
+  --brownDark: #6a4026;
+  --accent: #c78845;
+  --muted: #7a7a7a;
+  --card: #fff6f6;
+}
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700;400&family=Montserrat:wght@300;400;600&display=swap');
+
+*{box-sizing:border-box}
+html,body{
+  height:100%;
+  background:var(--bg);
+  font-family:"Montserrat",sans-serif;
+  color:#222;
+  margin:0;
+  padding:0;
+}
+
+.aboutPage{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* centered container */
+.container{
+  width:100%;
+  max-width:1100px;
+  margin:10px auto 0;
+  padding:0 18px;
+}
+
+/* HERO */
+.hero{
+  display:flex;
+  gap:0;
+  align-items:stretch;
+  margin-top:6px;
+}
+
+/* Left content panel */
+.leftPanel{
+  flex:0 0 46%;
+  background:var(--panel);
+  padding:46px 42px;
+  display:flex;
+  border-radius:10px 20px;
+  flex-direction:column;
+  justify-content:flex-start;
+  min-height:740px;
+  position:relative;
+}
+
+/* Right crest panel */
+.rightPanel{
+  flex:1;
+  min-height:740px;
+  position:relative;
+  background-image:url('/public/assets/logo.png'); /* crest here */
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size: 80%; /* default crest size */
+  border-radius:20px 10px;
+  background-color:#fff6f6;
+  box-shadow:0 6px 0 rgba(0,0,0,0.06);
+  border:1px solid rgba(0,0,0,0.05);
+}
+
+/* Crest resizing (adaptive) */
+@media (max-width:1200px){
+  .rightPanel{ background-size:70%; }
+}
+@media (max-width:980px){
+  .rightPanel{ min-height:500px; background-size:60%; }
+}
+@media (max-width:768px){
+  .rightPanel{ min-height:400px; background-size:50%; }
+}
+@media (max-width:560px){
+  .rightPanel{ min-height:320px; background-size:40%; }
+}
+@media (max-width:420px){
+  .rightPanel{ min-height:260px; background-size:35%; }
+}
+
+/* ABOUT text */
+.h1{
+  font-family:'Merriweather',serif;
+  font-size:72px;
+  color:var(--brownDark);
+  margin:0;
+  z-index:2;
+}
+.h1Underline{
+  height:8px;
+  width:120px;
+  background:var(--brown);
+  border-radius:8px;
+  margin:14px 0 22px;
+}
+.h1UnderlineSmall{
+  height:8px;
+  width:100px;
+  background:var(--brown);
+  border-radius:8px;
+  margin:8px 0 12px;
+}
+.lead{
+  color:#202020;
+  font-size:16px;
+  line-height:1.6;
+  margin-bottom:24px;
+  max-width:420px;
+}
+.missionTitle{
+  font-size:32px;
+  color:var(--brown);
+  font-family:'Merriweather',serif;
+  margin-top:6px;
+}
+.missionText{
+  font-size:13px;
+  color:#333;
+  margin-top:12px;
+  line-height:1.5;
+  max-width:360px;
+}
+
+/* divider */
+.divider{
+  height:18px;
+  background:var(--brownDark);
+  margin-top:18px;
+  box-shadow:0 2px 0 rgba(0,0,0,0.06) inset;
+}
+
+/* TEAM section */
+.teamSection{
+  text-align:center;
+  padding:34px 12px 70px;
+}
+.teamTitle{
+  font-family:'Merriweather',serif;
+  font-size:28px;
+  color:var(--brown);
+  margin-bottom:8px;
+  display:inline-block;
+  position:relative;
+  padding-bottom:6px;
+}
+.teamTitle::after{
+  content:'';
+  display:block;
+  height:6px;
+  width:140px;
+  background:var(--brown);
+  border-radius:6px;
+  margin:8px auto 0;
+}
+.teamSub{
+  color:black;
+  max-width:760px;
+  margin:8px auto 28px;
+  font-size:16px;
+}
+
+/* cards */
+.topCard, .card{
+  background:var(--card);
+  height:120px;
+  border-radius:6px;
+  box-shadow:0 3px 0 rgba(0,0,0,0.15);
+  border:1px solid rgba(0,0,0,0.06);
+}
+.topCard{
+  width:180px;
+  margin:18px auto;
+  transform: translateY(-12px);
+}
+.row{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  max-width:980px;
+  margin: 10px auto;
+  align-items:start;
+}
+.rowBottom{ margin-top:16px; }
+
+/* responsive adjustments for layout */
+@media (max-width:980px){
+  .hero{flex-direction:column}
+  .leftPanel{flex:1 0 auto;padding:28px;min-height:420px}
+  .h1{font-size:48px}
+  .row{grid-template-columns: repeat(2, 1fr); max-width:600px;}
+}
+@media (max-width:560px){
+  .leftPanel{padding:20px}
+  .h1{font-size:38px}
+  .missionTitle{font-size:24px}
+  .row{grid-template-columns: 1fr; gap:14px; max-width:420px;}
+}
