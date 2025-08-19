@@ -1,8 +1,4 @@
-.headerWrapper {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+
 
 /* Header.module.css */
 .topbar {
@@ -12,7 +8,10 @@
 }
 
 .header {
-  background: #f5f2ef;          /* light warm gray like in image */
+  background: #f5f2ef;        /* light warm gray like in image */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
