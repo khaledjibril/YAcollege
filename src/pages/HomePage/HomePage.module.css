@@ -241,7 +241,7 @@ main {
   flex: 1 1 360px;
   min-height: 250px;
   background: linear-gradient(180deg, rgba(21, 21, 21, 0.42), rgba(21, 21, 21, 0.42)),
-    url('/public/assets/bukSenate.jpg') center/cover no-repeat;
+    url('/assets/bukSenate.jpg') center/cover no-repeat;
   border-radius: 20px;
   box-shadow: 0 6px 0 rgba(0, 0, 0, 0.06);
 }
@@ -262,7 +262,7 @@ main {
 .mission .box {
   flex: 1 1 300px;
   min-height: 200px;
-  background: url('/public/assets/logo.png') center/contain no-repeat;
+  background: url(/assets/logo.png') center/contain no-repeat;
   border-radius: 10px;
   box-shadow: 0 6px 0 rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(0, 0, 0, 0.05);
